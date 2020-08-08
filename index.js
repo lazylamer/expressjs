@@ -26,8 +26,7 @@ const hbs = exphbs.create({
 configureHbs(app, hbs);
 
 //using static files
-app.use('/public', express.static(path.join(__dirname, 'public')));
-// app.use(express.static('/public'));
+app.use(express.static('public'));
 //routers
 app.use(express.urlencoded({extended: false}))
 app.use('/', homeRoutes);

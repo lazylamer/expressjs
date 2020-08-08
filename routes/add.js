@@ -2,6 +2,10 @@ const {Router} = require('express');
 const router = Router();
 const Course = require('../models/course');
 
+const removeSpaces = str => {
+    return str.replace(/\s/g, '');
+}
+
 router.get('/', (req, res) => {
     res.render('add', {
         title: 'add',
@@ -11,7 +15,8 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const {title, price, name, image} = req.body;
-    const course = new Course(title, price, name, image);
+    console.log(typeof price);
+    const course = new Course(title, removeSpaces(price), name, image);
     await course.save();
     res.redirect('/courses');
 });

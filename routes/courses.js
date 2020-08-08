@@ -12,7 +12,10 @@ router.get('/',  async (req, res) => {
         courses,
         isCourses: true
     });
+});
 
+router.get('/:id', (req, res) => {
+    res.render('course');
 });
 
 module.exports = router;
